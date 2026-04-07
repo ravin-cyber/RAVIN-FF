@@ -32,7 +32,7 @@ button {padding:10px; margin:5px;}
 <div class="products" id="productList"></div>
 
 <script>
-let products = JSON.parse(localStorage.getItem('products')) || [];
+let products = [];
 
 function showProducts(){
     let html = "";
@@ -40,8 +40,6 @@ function showProducts(){
         html += `<div class='card'>
         <h3>${p.name}</h3>
         <p>₹${p.price}</p>
-        <button onclick="editProduct(${i})">Edit</button>
-        <button onclick="deleteProduct(${i})">Delete</button>
         </div>`;
     });
     document.getElementById("productList").innerHTML = html;
@@ -51,39 +49,15 @@ function addProduct(){
     let name = document.getElementById("name").value;
     let price = document.getElementById("price").value;
 
-    console.log(name, price); // debug
-
     if(name && price){
-        products.push({name:name, price:price});
-        localStorage.setItem('products', JSON.stringify(products));
+        products.push({name,price});
         showProducts();
-        alert("Product Added ✅");
+        alert("Product Added");
     } else {
-        alert("Enter details properly");
+        alert("Enter details");
     }
 }
-
-function editProduct(i){
-    let newName = prompt("Edit name:", products[i].name);
-    let newPrice = prompt("Edit price:", products[i].price);
-
-    if(newName && newPrice){
-        products[i] = {name:newName, price:newPrice};
-        localStorage.setItem('products', JSON.stringify(products));
-        showProducts();
-    }
-}
-
-function deleteProduct(i){
-    if(confirm("Delete product?")){
-        products.splice(i,1);
-        localStorage.setItem('products', JSON.stringify(products));
-        showProducts();
-    }
-}
-
-showProducts();
-</script>
+        </script>
 
 </body>
 </html>
