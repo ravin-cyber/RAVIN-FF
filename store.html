@@ -51,12 +51,15 @@ function addProduct(){
     let name = document.getElementById("name").value;
     let price = document.getElementById("price").value;
 
+    console.log(name, price); // debug
+
     if(name && price){
-        products.push({name,price});
+        products.push({name:name, price:price});
         localStorage.setItem('products', JSON.stringify(products));
         showProducts();
+        alert("Product Added ✅");
     } else {
-        alert("Enter details");
+        alert("Enter details properly");
     }
 }
 
