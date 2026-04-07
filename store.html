@@ -3,14 +3,14 @@
 <head>
 <title>RAVIN-FF Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 body {margin:0; font-family:Arial; background:#0b0f19; color:white;}
 header {background:#020617; padding:20px; text-align:center;}
-.btn {background:#00f7ff; padding:10px; color:black; text-decoration:none; border-radius:5px;}
-.products {display:flex; flex-wrap:wrap; justify-content:center;}
-.card {background:#1e293b; margin:10px; padding:10px; width:250px; border-radius:10px;}
-input {padding:8px; margin:5px; width:90%;}
-.cart {position:fixed; top:10px; right:10px; background:#00f7ff; padding:10px; color:black;}
+input {padding:10px; margin:5px;}
+button {padding:10px; margin:5px;}
+.products {display:flex; flex-wrap:wrap;}
+.card {background:#1e293b; margin:10px; padding:10px; border-radius:10px;}
 </style>
 </head>
 
@@ -18,41 +18,21 @@ input {padding:8px; margin:5px; width:90%;}
 
 <header>
 <h1>RAVIN-FF STORE</h1>
-<p>🔥 Gaming Account Shop 🔥</p>
 </header>
 
-<div class="cart">
-Cart: <span id="cartCount">0</span>
-</div>
+<h2 style="text-align:center;">Admin Panel</h2>
 
-<h2 style="text-align:center;">Products</h2>
-<div class="products" id="productList"></div>
-
-<!-- Admin Panel -->
-<div style="text-align:center; margin:20px;">
-<h3>Admin Panel</h3>
+<div style="text-align:center;">
 <input id="name" placeholder="Product Name">
 <input id="price" placeholder="Price">
 <button onclick="addProduct()">Add Product</button>
 </div>
 
-<!-- Order Form -->
-<div style="text-align:center;">
-<h3>Order Now</h3>
-<input id="customer" placeholder="Your Name">
-<input id="phone" placeholder="Phone Number">
-<button onclick="placeOrder()">Place Order</button>
-</div>
-
-<!-- UPI Payment -->
-<div style="text-align:center; margin:20px;">
-<h3>Pay via UPI</h3>
-<a class="btn" href="upi://pay?pa=ravinrobert31@okicici&pn=RAVIN&cu=INR">Pay Now</a>
-</div>
+<h2 style="text-align:center;">Products</h2>
+<div class="products" id="productList"></div>
 
 <script>
 let products = JSON.parse(localStorage.getItem('products')) || [];
-let cart = [];
 
 function showProducts(){
     let html = "";
@@ -60,7 +40,6 @@ function showProducts(){
         html += `<div class='card'>
         <h3>${p.name}</h3>
         <p>₹${p.price}</p>
-        <button onclick="addToCart(${i})">Add to Cart</button><br><br>
         <button onclick="editProduct(${i})">Edit</button>
         <button onclick="deleteProduct(${i})">Delete</button>
         </div>`;
@@ -77,37 +56,27 @@ function addProduct(){
         localStorage.setItem('products', JSON.stringify(products));
         showProducts();
     } else {
-        alert("Enter product details");
+        alert("Enter details");
     }
 }
 
 function editProduct(i){
-    let newName = prompt("Edit product name:", products[i].name);
+    let newName = prompt("Edit name:", products[i].name);
     let newPrice = prompt("Edit price:", products[i].price);
 
     if(newName && newPrice){
-        products[i].name = newName;
-        products[i].price = newPrice;
+        products[i] = {name:newName, price:newPrice};
         localStorage.setItem('products', JSON.stringify(products));
         showProducts();
     }
 }
 
 function deleteProduct(i){
-    if(confirm("Delete this product?")){
+    if(confirm("Delete product?")){
         products.splice(i,1);
         localStorage.setItem('products', JSON.stringify(products));
         showProducts();
     }
-}
-
-function addToCart(i){
-    cart.push(products[i]);
-    document.getElementById("cartCount").innerText = cart.length;
-}
-
-function placeOrder(){
-    alert("Order placed!");
 }
 
 showProducts();
