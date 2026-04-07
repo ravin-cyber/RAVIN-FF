@@ -1,87 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head> 
+<head>
 <title>RAVIN-FF STORE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body {
-    margin:0;
-    font-family:Arial;
-    color:white;
-    background: linear-gradient(-45deg, #000000, #0f172a, #1e293b, #020617);
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
-}
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-header {
-    background:#020617;
-    padding:20px;
-    text-align:center;
-}
-
-header h1 {
-    color:#00f7ff;
-}
-
-.hero {
-    background:url('https://wallpapercave.com/wp/wp7410746.jpg');
-    background-size:cover;
-    padding:80px 20px;
-    text-align:center;
-}
-
-.hero h2 {
-    font-size:30px;
-}
-
-.btn {
-    background:#00f7ff;
-    padding:12px 20px;
-    color:black;
-    text-decoration:none;
-    border-radius:5px;
-}
-
-.section {
-    padding:30px;
-    text-align:center;
-}
-
-.products {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-.card {
-    background:#1e293b;
-    margin:15px;
-    padding:15px;
-    width:250px;
-    border-radius:10px;
-}
-
-.card img {
-    width:100%;
-    border-radius:10px;
-}
-
-.whatsapp {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25D366;
-    color:white;
-    padding:15px;
-    border-radius:50%;
-    font-size:20px;
-    text-decoration:none;
-}
+body {margin:0; font-family:Arial; background:#0b0f19; color:white;}
+header {background:#020617; padding:20px; text-align:center;}
+input {padding:10px; margin:5px;}
+button {padding:10px; margin:5px;}
+.products {display:flex; flex-wrap:wrap; justify-content:center;}
+.card {background:#1e293b; margin:10px; padding:10px; border-radius:10px;}
 </style>
 </head>
 
@@ -89,50 +18,46 @@ header h1 {
 
 <header>
 <h1>RAVIN-FF STORE</h1>
-<p>🔥 Buy Premium Free Fire Accounts 🔥</p>
 </header>
 
-<div class="hero">
-<h2>Top Level Accounts Available</h2>
-<a class="btn" href="#products">View Products</a>
+<h2 style="text-align:center;">Admin Panel</h2>
+
+<div style="text-align:center;">
+<input id="name" placeholder="Product Name">
+<input id="price" placeholder="Price">
+<button onclick="addProduct()">Add Product</button>
 </div>
 
-<div class="section">
-<h2>Why Choose Us?</h2>
-<p>✔ Trusted Seller<br>✔ Instant Delivery<br>✔ Secure Deals</p>
-</div>
+<h2 style="text-align:center;">Products</h2>
+<div class="products" id="productList"></div>
 
-<div class="section" id="products">
-<h2>🔥 Available Accounts 🔥</h2>
+<script>
+let products = [];
 
-<div class="products">
+function showProducts(){
+    let html = "";
+    products.forEach((p)=>{
+        html += `<div class='card'>
+        <h3>${p.name}</h3>
+        <p>₹${p.price}</p>
+        </div>`;
+    });
+    document.getElementById("productList").innerHTML = html;
+}
 
-<div class="card">
-<img src="https://wallpapercave.com/wp/wp7410738.jpg">
-<h3>Level 70 Account</h3>
-<p>Rare Skins + Elite Pass</p>
-<p>₹999</p>
-</div>
+function addProduct(){
+    let name = document.getElementById("name").value;
+    let price = document.getElementById("price").value;
 
-<div class="card">
-<img src="https://wallpapercave.com/wp/wp7410742.jpg">
-<h3>Level 65 Account</h3>
-<p>Good Collection</p>
-<p>₹799</p>
-</div>
-
-<div class="card">
-<img src="https://wallpapercave.com/wp/wp7410745.jpg">
-<h3>Starter Pro Account</h3>
-<p>Budget Friendly</p>
-<p>₹499</p>
-</div>
-
-</div>
-</div>
-
-<!-- WhatsApp Button -->
-<a class="whatsapp" href="https://wa.me/919042458779">💬</a>
+    if(name && price){
+        products.push({name,price});
+        showProducts();
+        alert("Product Added ✅");
+    } else {
+        alert("Enter details");
+    }
+}
+</script>
 
 </body>
 </html>
