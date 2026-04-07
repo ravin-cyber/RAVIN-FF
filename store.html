@@ -33,6 +33,7 @@ button {padding:10px; margin:5px;}
 
 <script>
 let products = [];
+let cart = [];
 
 function showProducts(){
     let html = "";
@@ -40,6 +41,9 @@ function showProducts(){
         html += `<div class='card'>
         <h3>${p.name}</h3>
         <p>₹${p.price}</p>
+        <button onclick="addToCart(${i})">Add to Cart</button><br><br>
+        <button onclick="editProduct(${i})">Edit</button>
+        <button onclick="deleteProduct(${i})">Delete</button>
         </div>`;
     });
     document.getElementById("productList").innerHTML = html;
@@ -52,12 +56,40 @@ function addProduct(){
     if(name && price){
         products.push({name,price});
         showProducts();
-        alert("Product Added");
+        alert("Product Added ✅");
     } else {
         alert("Enter details");
     }
 }
-        </script>
+
+function editProduct(i){
+    let newName = prompt("Edit name:", products[i].name);
+    let newPrice = prompt("Edit price:", products[i].price);
+
+    if(newName && newPrice){
+        products[i] = {name:newName, price:newPrice};
+        showProducts();
+    }
+}
+
+function deleteProduct(i){
+    if(confirm("Delete product?")){
+        products.splice(i,1);
+        showProducts();
+    }
+}
+
+function addToCart(i){
+    cart.push(products[i]);
+    document.getElementById("cartCount").innerText = cart.length;
+}
+
+function payNow(){
+    window.location.href = "upi://pay?pa=yourupi@upi&pn=RAVIN&cu=INR";
+}
+
+showProducts();
+</script>
 
 </body>
 </html>
