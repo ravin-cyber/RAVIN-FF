@@ -412,6 +412,25 @@ function buy() {
 
 </body>
 </html>
+<div class="nav-links">
+  <a href="#" onclick="showLogin()">Login</a>
+  <a href="#" onclick="showRegister()">Register</a>
+</div>
+<div id="loginForm">
+  <h2>Login</h2>
+  <input id="loginUser" placeholder="Username"><br><br>
+  <input id="loginPass" type="password" placeholder="Password"><br><br>
+  <button onclick="login()">Login</button>
+</div>
+
+<div id="registerForm" style="display:none;">
+  <h2>Register</h2>
+  <input id="regUser" placeholder="Username"><br><br>
+  <input id="regEmail" placeholder="Gmail"><br><br>
+  <input id="regPass" type="password" placeholder="Password"><br><br>
+  <button onclick="register()">Register</button>
+</div>
+
 <div class="navbar">
   <div class="logo">Game Zone</div>
 
