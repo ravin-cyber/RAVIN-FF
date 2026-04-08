@@ -384,7 +384,24 @@ body {
   }
 </style>
 </head>
-<body>
+<script>
+const btn = document.getElementById("contactBtn");
+const options = document.getElementById("contactOptions");
+
+btn.onclick = function(event) {
+    event.stopPropagation();
+
+    if (options.style.display === "block") {
+        options.style.display = "none";
+        btn.innerHTML = "Contact ▼";
+    } else {
+        options.style.display = "block";
+        btn.innerHTML = "Contact ▲";
+    }
+};
+</script>
+  
+  <body>
         
   <script>
 const contactBtn = document.getElementById("contactBtn");
