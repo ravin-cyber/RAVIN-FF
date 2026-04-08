@@ -450,7 +450,29 @@ btn.onclick = function(event) {
     }
 };
 </script>
-  
+  <script>
+const btn = document.getElementById("contactBtn");
+const options = document.getElementById("contactOptions");
+
+btn.onclick = function(event) {
+    event.stopPropagation();
+
+    if (options.style.display === "block") {
+        options.style.display = "none";
+        btn.innerHTML = "Contact ▼";
+    } else {
+        options.style.display = "block";
+        btn.innerHTML = "Contact ▲";
+    }
+};
+
+// close when clicking outside
+document.addEventListener("click", function() {
+    options.style.display = "none";
+    btn.innerHTML = "Contact ▼";
+});
+  </script>
+ 
   <body>
         
   <script>
