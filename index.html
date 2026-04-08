@@ -6,6 +6,57 @@
 <title>Ravin Gaming</title>
 
 <style>
+  .reviews-section {
+  padding: 20px;
+  text-align: center;
+  background: #111;
+  color: white;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.review-card {
+  background: #1e1e1e;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.review-card h3 {
+  color: gold;
+}
+
+.review-card span {
+  color: gray;
+  font-size: 14px;
+}
+
+.review-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-form input,
+.review-form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.review-form button {
+  padding: 10px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
   .ownership-btn {
   position: fixed;
   bottom: 20px;
@@ -449,6 +500,33 @@ button:hover {
     }
   }
     </script>
+  <script>
+function addReview() {
+  let name = document.getElementById("name").value;
+  let message = document.getElementById("message").value;
+
+  if(name === "" || message === "") {
+    alert("Please fill all fields");
+    return;
+  }
+
+  let container = document.querySelector(".review-container");
+
+  let newReview = document.createElement("div");
+  newReview.classList.add("review-card");
+
+  newReview.innerHTML = `
+    <h3>⭐ 5/5</h3>
+    <p>"${message}"</p>
+    <span>- ${name}</span>
+  `;
+
+  container.appendChild(newReview);
+
+  document.getElementById("name").value = "";
+  document.getElementById("message").value = "";
+}
+  </script>
   
   
 <body>
@@ -589,5 +667,32 @@ function buy() {
   <div class="trusted-banner">
   Trusted Seller ✅
   </div>
-  
+  <section class="reviews-section">
+  <h2>Customer Reviews</h2>
+
+  <div class="review-container">
+
+    <div class="review-card">
+      <h3>⭐ 5/5</h3>
+      <p>"Great service and instant delivery. Trusted seller!"</p>
+      <span>- Ravi</span>
+    </div>
+
+    <div class="review-card">
+      <h3>⭐ 4/5</h3>
+      <p>"Good pricing and smooth transaction."</p>
+      <span>- Arun</span>
+    </div>
+
+  </div>
+  </section>
+      <div class="review-form">
+  <h3>Leave a Review</h3>
+
+  <input type="text" id="name" placeholder="Your Name">
+  <textarea id="message" placeholder="Your Review"></textarea>
+
+  <button onclick="addReview()">Submit</button>
+      </div>
+      
 </html>
