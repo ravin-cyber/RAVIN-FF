@@ -363,6 +363,23 @@ body {
 </style>
 </head>
 <body>
+  <script>
+const contactBtn = document.getElementById("contactBtn");
+const contactMenu = document.getElementById("contactMenu");
+
+contactBtn.onclick = function() {
+    if (contactMenu.style.display === "block") {
+        contactMenu.style.display = "none";
+    } else {
+        contactMenu.style.display = "block";
+    }
+};
+  </script>
+  
+  <div id="contactMenu" style="display:none;" class="contact-menu">
+    <a href="https://wa.me/919042458779" target="_blank">📱 WhatsApp</a>
+    <a href="https://instagram.com/rx_traffic_razer_46" target="_blank">📸 Instagram</a>
+  </div>
   <div id="loginForm" style="display:none;">
     <div class="form-box">
         <h2>Login</h2>
