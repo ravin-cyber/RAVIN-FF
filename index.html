@@ -6,6 +6,63 @@
 <title>Ravin Gaming</title>
 
 <style>
+  .ownership-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Modal background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+/* Modal box */
+.modal-content {
+  background-color: #222;
+  color: white;
+  margin: 20% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  animation: popup 0.3s ease;
+}
+
+/* Close button */
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes popup {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
   .ownership-section {
   background: #111;
   color: white;
@@ -359,6 +416,38 @@ button:hover {
   });
   </script>
   <a href="#ownership" class="ownership-btn">Ownership</a>
+  <button class="ownership-btn" onclick="openModal()">Ownership</button>
+  <div id="ownershipModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <h2>Ownership</h2>
+
+    <p>
+      RAVIN GAME ZONE is owned and managed by Ravin.  
+      We provide premium gaming accounts with trusted service, secure transactions, and instant delivery.  
+      Our mission is to maintain transparency and customer satisfaction.
+    </p>
+
+  </div>
+    <script>
+  function openModal() {
+    document.getElementById("ownershipModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("ownershipModal").style.display = "none";
+  }
+
+  // Close when clicking outside
+  window.onclick = function(event) {
+    let modal = document.getElementById("ownershipModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+    </script>
+  
   
 <body>
   <div id="preloader">
