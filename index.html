@@ -6,6 +6,43 @@
 <title>Ravin Gaming</title>
 
 <style>
+  .tooltip {
+  position: absolute;
+  right: 70px;
+  background: black;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  display: none;
+}
+
+.floating-review:hover .tooltip {
+  display: block;
+}
+  
+  .floating-review {
+  position: fixed;
+  bottom: 90px; /* adjust above WhatsApp if present */
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+/* Hover effect */
+.floating-review:hover {
+  transform: scale(1.1);
+}
   .reviews-section {
   padding: 20px;
   text-align: center;
@@ -530,6 +567,9 @@ function addReview() {
   
   
 <body>
+  <div class="floating-review" onclick="openReviews()">
+  ⭐
+  </div>
   <div id="preloader">
   <div class="loader"></div>
   <h2>RAVIN GAME ZONE</h2>
@@ -694,5 +734,10 @@ function buy() {
 
   <button onclick="addReview()">Submit</button>
       </div>
+      
+      <div class="floating-review" onclick="openReviews()">
+  ⭐
+  <span class="tooltip">Reviews</span>
+</div>
       
 </html>
