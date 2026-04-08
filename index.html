@@ -6,6 +6,27 @@
 <title>Ravin Gaming</title>
 
 <style>
+  .ownership-section {
+  background: #111;
+  color: white;
+  padding: 30px;
+  text-align: center;
+  margin-top: 20px;
+  }
+  .ownership-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  }
+  
   #preloader {
   position: fixed;
   width: 100%;
@@ -337,6 +358,7 @@ button:hover {
     preloader.style.display = "none";
   });
   </script>
+  <a href="#ownership" class="ownership-btn">Ownership</a>
   
 <body>
   <div id="preloader">
@@ -441,6 +463,15 @@ button:hover {
   <!-- GPay Floating Button -->
   <div class="float-btn gpay" onclick="openPayment()">
     <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png">
+  </div>
+  
+  <div id="ownership" class="ownership-section">
+  <h2>Ownership</h2>
+  <p>
+    RAVIN GAME ZONE is owned and managed by Ravin.  
+    This platform is dedicated to providing premium gaming accounts with trusted service and instant delivery.  
+    Our goal is to ensure safe transactions, transparency, and customer satisfaction.  
+  </p>
   </div>
 
 </div>
