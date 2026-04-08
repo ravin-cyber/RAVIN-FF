@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Game Store</title>
+  <title>Buy & Sell Store</title>
+
   <style>
     body {
       font-family: Arial;
@@ -14,40 +15,12 @@
       background: #020617;
       padding: 20px;
       text-align: center;
-      font-size: 26px;
+      font-size: 24px;
       color: #00f7ff;
-      box-shadow: 0 0 10px #00f7ff;
     }
 
     .container {
       padding: 20px;
-    }
-
-    .box {
-      background: #111827;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 10px rgba(0,255,255,0.2);
-    }
-
-    input, button {
-      padding: 10px;
-      margin: 5px;
-      border-radius: 5px;
-      border: none;
-    }
-
-    input {
-      background: #1f2937;
-      color: white;
-    }
-
-    button {
-      background: #00f7ff;
-      color: black;
-      cursor: pointer;
-      font-weight: bold;
     }
 
     .products {
@@ -61,24 +34,29 @@
       padding: 15px;
       border-radius: 10px;
       text-align: center;
-      box-shadow: 0 0 10px rgba(0,255,255,0.2);
-      transition: 0.3s;
     }
 
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00f7ff;
+    button {
+      padding: 10px;
+      background: #00f7ff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
     }
 
-    .cart {
-      background: #111827;
-      padding: 15px;
-      border-radius: 10px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
+    /* WhatsApp Floating Button */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
 
   </style>
@@ -86,92 +64,46 @@
 
 <body>
 
-<header>🎮 Game Store</header>
+<header>🛒 Buy & Sell Store</header>
 
 <div class="container">
 
-  <!-- Add Product -->
-  <div class="box">
-    <h3>Add Game</h3>
-    <input type="text" id="name" placeholder="Game Name">
-    <input type="number" id="price" placeholder="Price">
-    <button onclick="addProduct()">Add Game</button>
-  </div>
+  <h2>Products</h2>
 
-  <!-- Products -->
-  <div class="box">
-    <h3>Games</h3>
-    <div class="products" id="productList"></div>
-  </div>
+  <div class="products">
 
-  <!-- Cart -->
-  <div class="cart">
-    <h3>Cart</h3>
-    <ul id="cartList"></ul>
-    <p>Total: ₹<span id="total">0</span></p>
-    <button onclick="payUPI()">Pay with UPI</button>
+    <div class="card">
+      <h3>Product 1</h3>
+      <p>Price: ₹699</p>
+      <button onclick="buy()">Buy Now</button>
+    </div>
+
+    <div class="card">
+      <h3>Product 2</h3>
+      <p>Price: ₹699</p>
+      <button onclick="buy()">Buy Now</button>
+    </div>
+
+    <div class="card">
+      <h3>Product 3</h3>
+      <p>Price: ₹699</p>
+      <button onclick="buy()">Buy Now</button>
+    </div>
+
   </div>
 
 </div>
 
+<!-- WhatsApp Button -->
+<a class="whatsapp-btn"
+   href="https://wa.me/919042458779"
+   target="_blank">
+   💬 Contact on WhatsApp
+</a>
+
 <script>
-let products = [];
-let cart = [];
-let total = 0;
-
-function addProduct() {
-  let name = document.getElementById("name").value;
-  let price = document.getElementById("price").value;
-
-  if (!name || !price) {
-    alert("Enter game details");
-    return;
-  }
-
-  products.push({ name, price: parseFloat(price) });
-  displayProducts();
-}
-
-function displayProducts() {
-  let list = document.getElementById("productList");
-  list.innerHTML = "";
-
-  products.forEach((p, index) => {
-    list.innerHTML += `
-      <div class="card">
-        <h4>🎮 ${p.name}</h4>
-        <p>₹${p.price}</p>
-        <button onclick="addToCart(${index})">Buy</button>
-      </div>
-    `;
-  });
-}
-
-function addToCart(index) {
-  let item = products[index];
-  cart.push(item);
-  total += item.price;
-  displayCart();
-}
-
-function displayCart() {
-  let cartList = document.getElementById("cartList");
-  cartList.innerHTML = "";
-
-  cart.forEach(item => {
-    cartList.innerHTML += `<li>${item.name} - ₹${item.price}</li>`;
-  });
-
-  document.getElementById("total").innerText = total;
-}
-
-function payUPI() {
-  if (total === 0) {
-    alert("Cart is empty");
-    return;
-  }
-
-  let upiUrl = `upi://pay?pa=ravinrobert31@okicici&pn=GameStore&am=${total}&cu=INR`;
+function buy() {
+  let upiUrl = "upi://pay?pa=ravinrobert31@okicici&pn=Store&am=699&cu=INR";
   window.location.href = upiUrl;
 }
 </script>
