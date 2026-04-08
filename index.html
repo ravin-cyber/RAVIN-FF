@@ -5,6 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ravin Buy & Sell Store</title>
 <style>
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+/* Nav links */
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+/* Login button */
+.login-btn {
+  padding: 6px 12px;
+  background: linear-gradient(90deg, #00ffcc, #ff00ff);
+  border-radius: 5px;
+  color: black;
+}
+
+/* Prevent content hiding under navbar */
+body {
+  padding-top: 70px;
+}
   .whatsapp-float img {
   width: 60px;
   height: 60px;
@@ -132,6 +173,14 @@
 </style>
 </head>
 <body>
+  <div class="navbar">
+  <div class="logo">🎮 Game Zone</div>
+
+  <div class="nav-links">
+    <a href="#">Contact</a>
+    <a href="#" class="login-btn">Login</a>
+  </div>
+  </div>
 
   <header>🛒 Ravin Buy & Sell Store</header>
 
