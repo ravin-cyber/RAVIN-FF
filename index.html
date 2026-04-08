@@ -1,112 +1,163 @@
-<!DOCTYPE html>
+       <!DOCTYPE html>
 <html>
 <head>
-<title>RAVIN-FF STORE</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ravin id Buy & Sell</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f1f3f6;
+      margin: 0;
+      padding: 0;
+    }
 
-<style>
-body {margin:0; font-family:Arial; background:#0b0f19; color:white;}
-header {background:#020617; padding:20px; text-align:center;}
-input {padding:10px; margin:5px;}
-button {padding:10px; margin:5px;}
-.products {display:flex; flex-wrap:wrap; justify-content:center;}
-.card {background:#1e293b; margin:10px; padding:10px; border-radius:10px;}
-</style>
+    header {
+      background: #2874f0;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .form-box, .product-box {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 5px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: #2874f0;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .cart {
+      margin-top: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 
 <body>
-    
 
-  <h2>Add Product</h2>
+<header>Mini Flipkart Clone</header>
 
-  <form id="productForm">
-    <input type="text" placeholder="Product Name" id="productName" required>
-    <input type="number" placeholder="Price" id="price" required>
+<div class="container">
 
-    <button type="submit">Add Product</button>
-    <button type="button" id="upiBtn">Pay with UPI</button>
-  </form>
+  <!-- Add Product -->
+  <div class="form-box">
+    <h3>Add Product</h3>
+    <input type="text" id="name" placeholder="Product Name">
+    <input type="number" id="price" placeholder="Price">
+    <button onclick="addProduct()">Add</button>
+  </div>
 
+  <!-- Products -->
+  <div class="product-box">
+    <h3>Products</h3>
+    <div class="products" id="productList"></div>
+  </div>
 
+  <!-- Cart -->
+  <div class="cart">
+    <h3>Cart</h3>
+    <ul id="cartList"></ul>
+    <p>Total: ₹<span id="total">0</span></p>
+    <button onclick="payUPI()">Pay with UPI</button>
+  </div>
 
-<header>
-<h1>RAVIN-FF STORE</h1>
-</header>
-
-<h2 style="text-align:center;">Admin Panel</h2>
-
-<div style="text-align:center;">
-<input id="name" placeholder="Product Name">
-<input id="price" placeholder="Price">
-<button onclick="addProduct()">Add Product</button>
 </div>
-
-<h2 style="text-align:center;">Products</h2>
-<div class="products" id="productList"></div>
 
 <script>
 let products = [];
+let cart = [];
+let total = 0;
 
-function showProducts(){
-    let html += `<div class='card'>
-<h3>${p.name}</h3>
-<p>₹${p.price}</p>
-<button onclick="addToCart(${i})">Add to Cart</button><br><br>
-<button onclick="editProduct(${i})">Edit</button>
-<button onclick="deleteProduct(${i})">Delete</button>
-</div>`;
-    });
-    document.getElementById("productList").innerHTML = html;
+function addProduct() {
+  let name = document.getElementById("name").value;
+  let price = document.getElementById("price").value;
+
+  if (!name || !price) {
+    alert("Enter product details");
+    return;
+  }
+
+  let product = { name, price: parseFloat(price) };
+  products.push(product);
+  displayProducts();
 }
 
-function addProduct(){
-    let name = document.getElementById("name").value;
-    let price = document.getElementById("price").value;
+function displayProducts() {
+  let list = document.getElementById("productList");
+  list.innerHTML = "";
 
-    if(name && price){
-        products.push({name,price});
-        showProducts();
-        alert("Product Added ✅");
-    } else {
-        alert("Enter details");
-    }
+  products.forEach((p, index) => {
+    list.innerHTML += `
+      <div class="card">
+        <h4>${p.name}</h4>
+        <p>₹${p.price}</p>
+        <button onclick="addToCart(${index})">Buy</button>
+      </div>
+    `;
+  });
 }
 
-function editProduct(i){
-    let newName = prompt("Edit name:", products[i].name);
-    let newPrice = prompt("Edit price:", products[i].price);
+function addToCart(index) {
+  let item = products[index];
+  cart.push(item);
+  total += item.price;
 
-    if(newName && newPrice){
-        products[i] = {name:newName, price:newPrice};
-        showProducts();
-    }
+  displayCart();
 }
 
-function deleteProduct(i){
-    if(confirm("Delete product?")){
-        products.splice(i,1);
-        showProducts();
-    }
-}
-    
-document.getElementById("productForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  alert("Product added!");
-});
+function displayCart() {
+  let cartList = document.getElementById("cartList");
+  cartList.innerHTML = "";
 
-document.getElementById("upiBtn").addEventListener("click", function(e) {
-  e.preventDefault();
-  let upiUrl = "upi://pay?pa=ravinrobert31@okicici&pn=Ravin&am=1&cu=INR";
+  cart.forEach(item => {
+    cartList.innerHTML += `<li>${item.name} - ₹${item.price}</li>`;
+  });
+
+  document.getElementById("total").innerText = total;
+}
+
+function payUPI() {
+  if (total === 0) {
+    alert("Cart is empty");
+    return;
+  }
+
+  let upiUrl = `upi://pay?pa=ravinrobert31@okicici&pn=Shop&am=${total}&cu=INR`;
   window.location.href = upiUrl;
-});
-
-    </script>
-    
-    <div style="text-align:center; margin:20px;">
-<button onclick="payNow()" style="background:#00f7ff; padding:15px; border:none; border-radius:10px;">
-💳 Pay with UPI
-</button>
-    </div>
+}
+</script>
 
 </body>
 </html>
