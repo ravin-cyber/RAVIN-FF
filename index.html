@@ -6,6 +6,13 @@
 <title>Ravin Gaming</title>
 
 <style>
+  .gpay {
+  background: #ffffff;
+}
+
+.gpay img {
+  width: 30px;
+}
   
   footer {
   text-align: center;
@@ -123,7 +130,23 @@ button:hover {
   <footer style="text-align:center; padding:10px; font-size:12px; background:#020617; margin-top:20px;">
   © 2026 Ravin Gaming. All rights reserved.
   </footer>
+<div id="paymentBox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); align-items:center; justify-content:center;">
 
+  <div style="background:#1e293b; padding:20px; border-radius:10px; text-align:center; width:250px;">
+
+    <h3>Google Pay / UPI</h3>
+
+    <p>Send payment to:</p>
+    <p><strong>ravinrobert31@okicici</strong></p>
+
+    <button onclick="copyUPI()">Copy UPI</button>
+    <br><br>
+    <button onclick="closePayment()">Close</button>
+
+  </div>
+
+</div>
+  
 <body>
 
 <header>
@@ -202,6 +225,18 @@ button:hover {
   </div>
 
 <script>
+  function openPayment() {
+  document.getElementById("paymentBox").style.display = "flex";
+}
+
+function closePayment() {
+  document.getElementById("paymentBox").style.display = "none";
+}
+
+function copyUPI() {
+  navigator.clipboard.writeText("ravinrobert31@okicici");
+  alert("UPI ID copied!");
+}
 function buy() {
   window.location.href = "https://wa.me/919042458779";
 }
