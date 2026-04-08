@@ -6,6 +6,26 @@
 <title>Ravin Gaming</title>
 
 <style>
+  /* WhatsApp button (bottom-most) */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Instagram button (above WhatsApp) */
+.floating-instagram {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+}
+
+/* Review button (above Instagram) */
+.floating-review {
+  position: fixed;
+  bottom: 160px;
+  right: 20px;
+}
   .tooltip {
   position: absolute;
   right: 70px;
@@ -738,6 +758,20 @@ function buy() {
       <div class="floating-review" onclick="openReviews()">
   ⭐
   <span class="tooltip">Reviews</span>
+</div>
+      <!-- WhatsApp -->
+<div class="floating-whatsapp">
+  <!-- WhatsApp icon -->
+</div>
+
+<!-- Instagram -->
+<div class="floating-instagram">
+  <!-- Instagram icon -->
+</div>
+
+<!-- Review -->
+<div class="floating-review" onclick="openReviews()">
+  ⭐
 </div>
       
 </html>
