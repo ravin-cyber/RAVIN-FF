@@ -1,97 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ravin Gaming Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-  box-sizing: border-box;
-    }
-    body {
-  font-size: 14px;
-    }
-    h1 { font-size: 20px; }
-h2 { font-size: 18px; }
-h3 { font-size: 16px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravin Gaming</title>
 
-p {
-  font-size: 13px;
-}
-    button, .nav-btn, .contact-btn {
-  padding: 6px 10px;
-  font-size: 13px;
-  border-radius: 6px;
-}
-    .product {
-  padding: 10px;
-  font-size: 13px;
-}
-
-.product img {
-  width: 100%;
-  height: auto;
-}
-    .navbar {
-  padding: 8px;
-  gap: 6px;
-}
-    img {
-  max-width: 100%;
-  height: auto;
-    }
-    
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 10px;
-}
-    
-    body {
+<style>
+body {
   margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-    }
-    body {
-  transform: scale(0.9);
-  transform-origin: top center;
-    }
-    
-    .navbar {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+header {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #020617;
+}
+
+header h1 {
+  font-size: 18px;
+}
+
+nav a {
+  margin-left: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container {
   padding: 15px;
 }
 
-.nav-btn {
-  background: #22c55e;
-  color: white;
-.nav-btn {
-  background: #22c55e;
-  color: white;
-  padding: 6px 12px;   /* smaller padding */
-  font-size: 14px;     /* smaller text */
-  text-decoration: none;
-  border-radius: 6px;  /* slightly smaller curve */
-  font-weight: bold;
-  transition: 0.3s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* lighter shadow */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
 }
 
-/* Hover effect */
-.nav-btn:hover {
+.card {
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.price {
+  margin: 8px 0;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  background: #22c55e;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
   background: #16a34a;
-  transform: translateY(-3px);
 }
 
-/* Click effect */
-.nav-btn:active {
-  transform: scale(0.95);
-}
-
-/* Container fixed at bottom */
-.contact-owner {
+/* Floating buttons */
+.floating {
   position: fixed;
   bottom: 15px;
   right: 15px;
@@ -100,278 +80,98 @@ p {
   gap: 10px;
 }
 
-/* Button style */
-.contact-btn {
+.float-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  background: #22c55e;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  justify-content: center;
 }
 
-/* Instagram color */
-.contact-btn.insta {
-  background: #e1306c;
-}
-
-/* Medium size logo */
-.contact-btn img {
-  width: 18px;
-  height: 18px;
-}
-
-/* Hover effect */
-.contact-btn:hover {
-  transform: scale(1.05);
-}
-
-.contact-owner h3 {
-  margin-bottom: 10px;
-}
-
-.contact-owner button {
-  margin: 10px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  background: #22c55e;
-  color: white;
-  cursor: pointer;
-}
-
-.contact-owner button:hover {
-  background: #16a34a;
-}
-    .product-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
-  object-fit: cover;
-    }
-    
-    .logo-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-    }
-    body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-    }
-.container {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-}
-    img {
-  max-width: 100%;
-  height: auto;
-}
-.logo {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-}
-    .buy-btn {
-  display: block;              /* full box */
-  width: 100%;
-  text-align: center;
-  margin-top: 12px;
-  padding: 12px;
-  background: linear-gradient(45deg, #25D366, #1ebe5d);
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: 0.3s;
-                              
-    .buy-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-}
-    }
-   .buy-btn {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-} 
-    
-.buy-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
+.whatsapp {
   background: #25D366;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
 }
 
-    .whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100;
+.instagram {
+  background: radial-gradient(circle, #feda75, #d62976, #962fbf);
 }
 
-.product-card {
-  margin-bottom: 80px;
+.float-btn img {
+  width: 25px;
 }
-    .chat-text {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  background: #25D366;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 14px;
-  animation: fadeInOut 3s infinite;
-}
-
-@keyframes fadeInOut {
-  0% {opacity: 0; transform: translateY(10px);}
-  50% {opacity: 1; transform: translateY(0);}
-  100% {opacity: 0; transform: translateY(10px);}
-    }
-    @keyframes bounce {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-    }
-    body{margin:0;font-family:Arial;background:#0f172a;color:white}
-    header{display:flex;justify-content:space-between;padding:15px;background:#020617}
-    a{color:white;text-decoration:none;margin:10px}
-    .hero{text-align:center;padding:60px}
-    .btn{background:#22c55e;padding:12px 25px;border-radius:25px}
-    .products{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;padding:20px}
-    .card{background:#1e293b;padding:15px;border-radius:10px;text-align:center}
-    .buy{background:#22c55e;padding:8px 15px;border-radius:20px;display:inline-block;margin-top:10px}
-  </style>
+</style>
 </head>
 
-   
-   
-</a>
-
-</a>
-  <!-- Chat Popup Text -->
-<div class="chat-text">💬 Chat with us</div>
-
-<!-- Animated WhatsApp Button -->
-<a href="https://wa.me/919042458779?text=Hi%20I%20want%20to%20buy%20account"
-   style="position:fixed; bottom:20px; right:20px; z-index:1000;">
-   
-   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
-        style="width:60px; height:60px; animation:bounce 1.5s infinite;">
-</a>
-  <div class="contact-owner">
-  <h3>Contact Owner</h3>
-  <p>Have questions? Reach out 👇</p>
-
-  <a href="https://wa.me/919042458779" target="_blank" class="contact-btn">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-    WhatsApp
-  </a>
-
-  <a href="https://instagram.com/rx_traffic_razer_46" target="_blank" class="contact-btn insta">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
-    Instagram
-  </a>
-  </div>
-  
 <body>
 
 <header>
-  <div class="logo-container">
-  <img src="logo.png" class="logo">
   <h1>Ravin Gaming</h1>
-  </div>
-  <div class="navbar">
-  <a href="index.html" class="nav-btn">Home</a>
-  <a href="login.html" class="nav-btn">Login</a>
-  <a href="#" class="nav-btn">Contact</a>
-  </div>
-  
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Login</a>
+    <a href="#">Contact</a>
+  </nav>
 </header>
 
-<div class="hero">
-  <h1>🔥 Premium Free Fire Accounts</h1>
-  <p>Safe | Trusted | Instant Delivery</p>
-</div>
-<div class="product-card">
+<div class="container">
+  <h2>🔥 Free Fire Accounts</h2>
 
-  <img src="images/ff-id.jpg" class="product-img">
+  <div class="products">
 
-  <div class="product-info">
-    <h3>Elite Account</h3>
-    <p>Level 70 | Rare Skins</p>
-    <p>₹1500</p>
+    <div class="card">
+      <img src="ff1.jpg">
+      <h3>ID 1</h3>
+      <p>Rare Skins</p>
+      <div class="price">₹999</div>
+      <button onclick="buy()">Buy Now</button>
+    </div>
 
-    <a href="https://wa.me/919042458779" class="buy-btn">
-      Buy Now
-    </a>
+    <div class="card">
+      <img src="ff2.jpg">
+      <h3>ID 2</h3>
+      <p>Legendary Guns</p>
+      <div class="price">₹7999</div>
+      <button onclick="buy()">Buy Now</button>
+    </div>
+
+    <div class="card">
+      <img src="ff3.jpg">
+      <h3>ID 3</h3>
+      <p>Emotes Bundle</p>
+      <div class="price">₹6999</div>
+      <button onclick="buy()">Buy Now</button>
+    </div>
+
+    <div class="card">
+      <img src="ff4.jpg">
+      <h3>ID 4</h3>
+      <p>Budget Account</p>
+      <div class="price">₹4999</div>
+      <button onclick="buy()">Buy Now</button>
+    </div>
+
   </div>
-
-</div>
-
-<div class="product-card">
-
-  <img src="https://via.placeholder.com/120" class="product-img">
-
-  <div class="product-info">
-    <h3>Rare Account</h3>
-    <p>Level 75 | more Skins</p>
-    <p>₹3000</p>
-
-    <a href="https://wa.me/919042458779" class="buy-btn">
-      Buy Now
-    </a>
-  </div>
-
-<div class="product-card">
-
-  <img src="https://via.placeholder.com/120" class="product-img">
-
-  <div class="product-info">
-    <h3>pro starter Account</h3>
-    <p>Level 62 | evo Skins</p>
-    <p>₹2500</p>
-
-    <a href="https://wa.me/919042458779" class="buy-btn">
-      Buy Now
-    </a>
-  </div>
-
 </div>
 
-  <div class="product-card">
+<!-- Floating Contact -->
+<div class="floating">
 
-  <img src="https://via.placeholder.com/120" class="product-img">
+  <a href="https://wa.me/919042458779" target="_blank" class="float-btn whatsapp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+  </a>
 
-  <div class="product-info">
-    <h3>old Account</h3>
-    <p>Level 70 | old Skins</p>
-    <p>₹4000</p>
-
-    <a href="https://wa.me/919042458779" class="buy-btn">
-      Buy Now
-    </a>
-  </div>
+  <a href="https://instagram.com/rx_traffic_razer_46" target="_blank" class="float-btn instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+  </a>
 
 </div>
+
+<script>
+function buy() {
+  window.location.href = "https://wa.me/919042458779";
+}
+</script>
 
 </body>
 </html>
