@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reset Password</title>
+</head>
+<body>
+
+<h2>Reset Password</h2>
+
+<input id="otp" placeholder="Enter OTP"><br><br>
+<input id="newpass" type="password" placeholder="New Password"><br><br>
+
+<button onclick="resetPassword()">Reset</button>
+
+<script>
+function resetPassword() {
+  let otp = document.getElementById("otp").value;
+  let newpass = document.getElementById("newpass").value;
+
+  let storedOtp = localStorage.getItem("otp");
+  let data = JSON.parse(localStorage.getItem("userData"));
+
+  if (otp == storedOtp) {
+    data.pass = newpass;
+    localStorage.setItem("userData", JSON.stringify(data));
+
+    alert("Password reset successful!");
+    window.location.href = "login.html";
+  } else {
+    alert("Invalid OTP");
+  }
+}
+</script>
+
+</body>
+</html>
