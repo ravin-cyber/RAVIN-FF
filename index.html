@@ -331,6 +331,50 @@ body {
 </style>
 </head>
 <body>
+  <script>
+function showLogin() {
+  document.getElementById("loginForm").style.display = "block";
+  document.getElementById("registerForm").style.display = "none";
+}
+
+function showRegister() {
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("registerForm").style.display = "block";
+}
+
+// Register user
+function register() {
+  let user = document.getElementById("regUser").value;
+  let email = document.getElementById("regEmail").value;
+  let pass = document.getElementById("regPass").value;
+
+  let data = { user, email, pass };
+
+  localStorage.setItem("userData", JSON.stringify(data));
+
+  alert("Registered successfully ✅");
+  showLogin();
+}
+
+// Login user
+function login() {
+  let user = document.getElementById("loginUser").value;
+  let pass = document.getElementById("loginPass").value;
+
+  let stored = JSON.parse(localStorage.getItem("userData"));
+
+  if (!stored) {
+    alert("Please register first");
+    return;
+  }
+
+  if (user === stored.user && pass === stored.pass) {
+    alert("Login successful ✅");
+  } else {
+    alert("Wrong username or password ❌");
+  }
+}
+  </script>
   <div class="navbar">
   <div class="logo">🎮 Ravin Game Zone</div>
 
