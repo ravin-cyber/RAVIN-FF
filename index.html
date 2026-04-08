@@ -88,7 +88,19 @@ function deleteProduct(i){
         showProducts();
     }
 }
-        </script>
+    
+document.getElementById("productForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  alert("Product added!");
+});
+
+document.getElementById("upiBtn").addEventListener("click", function(e) {
+  e.preventDefault();
+  let upiUrl = "upi://pay?pa=ravinrobert31@okicici&pn=ravinrobert31&am=1&cu=INR";
+  window.location.href = upiUrl;
+});
+
+    </script>
     
     <div style="text-align:center; margin:20px;">
 <button onclick="payNow()" style="background:#00f7ff; padding:15px; border:none; border-radius:10px;">
