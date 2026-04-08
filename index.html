@@ -5,6 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ravin Buy & Sell Store</title>
 <style>
+  /* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Contact button */
+.dropbtn {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Dropdown menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: #1f1f2e;
+  min-width: 150px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,255,204,0.5);
+  z-index: 1000;
+}
+
+/* Dropdown links */
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Hover effect */
+.dropdown-content a:hover {
+  background: #00ffcc;
+  color: black;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
   .navbar {
   display: flex;
   justify-content: space-between;
