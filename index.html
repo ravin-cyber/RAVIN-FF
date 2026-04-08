@@ -4,6 +4,23 @@
   <title>Ravin Gaming Store</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    .chat-text {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  animation: fadeInOut 3s infinite;
+}
+
+@keyframes fadeInOut {
+  0% {opacity: 0; transform: translateY(10px);}
+  50% {opacity: 1; transform: translateY(0);}
+  100% {opacity: 0; transform: translateY(10px);}
+    }
     @keyframes bounce {
   0% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -31,6 +48,16 @@
         style="width:60px; height:60px;">
 </a>
 
+</a>
+  <!-- Chat Popup Text -->
+<div class="chat-text">💬 Chat with us</div>
+
+<!-- Animated WhatsApp Button -->
+<a href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20buy%20account"
+   style="position:fixed; bottom:20px; right:20px; z-index:1000;">
+   
+   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+        style="width:60px; height:60px; animation:bounce 1.5s infinite;">
 </a>
 <body>
 
