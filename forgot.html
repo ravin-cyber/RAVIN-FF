@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forgot Password</title>
+</head>
+<body>
+
+<h2>Forgot Password</h2>
+
+<input id="email" placeholder="Enter Gmail"><br><br>
+
+<button onclick="sendOTP()">Send OTP</button>
+
+<script>
+function sendOTP() {
+  let email = document.getElementById("email").value;
+  let stored = JSON.parse(localStorage.getItem("userData"));
+
+  if (email === stored.email) {
+    let otp = Math.floor(1000 + Math.random() * 9000);
+    localStorage.setItem("otp", otp);
+
+    alert("OTP sent: " + otp + " (demo)");
+
+    window.location.href = "reset.html";
+  } else {
+    alert("Email not found");
+  }
+}
+</script>
+
+</body>
+</html>
