@@ -346,6 +346,27 @@ body {
 </head>
 <body>
   <script>
+function register() {
+  let user = document.getElementById("regUser").value;
+  let email = document.getElementById("regEmail").value;
+  let pass = document.getElementById("regPass").value;
+
+  if (!user || !email || !pass) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  let data = { user, email, pass };
+
+  localStorage.setItem("userData", JSON.stringify(data));
+
+  alert("Registered successfully ✅");
+
+  // switch to login form (if using same page)
+  showLogin();
+}
+  </script>
+  <script>
 function showLogin() {
   document.getElementById("loginForm").style.display = "block";
   document.getElementById("registerForm").style.display = "none";
