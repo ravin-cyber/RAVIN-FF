@@ -33,13 +33,45 @@
 .nav-btn:active {
   transform: scale(0.95);
 }
+
+/* Container fixed at bottom */
 .contact-owner {
-  background: #1e293b;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Button style */
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
   color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  border-radius: 10px;
+  font-weight: bold;
+  background: #22c55e;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Instagram color */
+.contact-btn.insta {
+  background: #e1306c;
+}
+
+/* Medium size logo */
+.contact-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Hover effect */
+.contact-btn:hover {
+  transform: scale(1.05);
 }
 
 .contact-owner h3 {
