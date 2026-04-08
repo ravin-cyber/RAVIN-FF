@@ -11,6 +11,64 @@
   align-items: center;
   background: #333;
   padding: 10px 20px;
+}
+
+.logo {
+  color: red; /* change color here */
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.login-btn {
+  background: blue;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Contact dropdown */
+.contact {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  background: white;
+  top: 100%;
+  left: 0;
+  min-width: 150px;
+}
+
+.dropdown a {
+  display: block;
+  color: black;
+  padding: 10px;
+}
+
+.dropdown a:hover {
+  background: #eee;
+}
+
+.contact:hover .dropdown {
+  display: block;
+}
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  padding: 10px 20px;
   color: white;
 }
 
