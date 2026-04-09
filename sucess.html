@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Successful</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background: #0f0f0f;
+      color: white;
+      padding-top: 100px;
+    }
+    .box {
+      background: #1f1f1f;
+      padding: 30px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    h1 {
+      color: #00ff88;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: red;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1>✅ Order Successful!</h1>
+  <p>Thank you for your purchase.</p>
+  <p>We will contact you on WhatsApp shortly.</p>
+
+  <button onclick="goHome()">Go Back Home</button>
+</div>
+
+<script>
+function goHome() {
+  window.location.href = "index.html"; // your main page
+}
+</script>
+
+</body>
+</html>
