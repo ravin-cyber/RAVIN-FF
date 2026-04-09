@@ -937,6 +937,20 @@ function goToNextPage() {
 
   </div>
       </div>
+      <script>
+function openModal() {
+  document.getElementById("productModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("productModal").style.display = "none";
+  document.getElementById("flipCard").classList.remove("flipped");
+}
+
+function flipCard() {
+  document.getElementById("flipCard").classList.toggle("flipped");
+}
+      </script>
       
       
 
