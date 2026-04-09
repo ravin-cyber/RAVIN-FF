@@ -6,6 +6,24 @@
 <title>Ravin Gaming</title>
 
 <style>
+  .pagination {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2874f0;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #0b5ed7;
+}
   .floating-gpay {
   position: fixed;
   bottom: 20px;
@@ -818,6 +836,16 @@ function placeOrder() {
   window.location.href = "success.html";
 }
 </script>
+      <div class="pagination">
+  <button onclick="goToNextPage()">Next Page ➡</button>
+</div>
+
+<script>
+function goToNextPage() {
+  window.location.href = "page2.html";
+}
+</script>
+      
       
 
 </body>
