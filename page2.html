@@ -1,1 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravin Gaming</title>
 
+<style>
+  .pagination {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2874f0;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #0b5ed7;
+}
+  .floating-gpay {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #0f9d58;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background: #111;
+  margin: 15% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+.close {
+  float: right;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.icons {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  font-size: 14px;
+}
+
+.qr {
+  width: 200px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+  /* WhatsApp button (bottom-most) */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Instagram button (above WhatsApp) */
+.floating-instagram {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+}
+
+/* Review button (above Instagram) */
+.floating-review {
+  position: fixed;
+  bottom: 160px;
+  right: 20px;
+}
+  .tooltip {
+  position: absolute;
+  right: 70px;
+  background: black;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  display: none;
+}
+
+.floating-review:hover .tooltip {
+  display: block;
+}
+  
+  .floating-review {
+  position: fixed;
+  bottom: 90px; /* adjust above WhatsApp if present */
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+/* Hover effect */
+.floating-review:hover {
+  transform: scale(1.1);
+}
+  .reviews-section {
+  padding: 20px;
+  text-align: center;
+  background: #111;
+  color: white;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.review-card {
+  background: #1e1e1e;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.review-card h3 {
+  color: gold;
+}
+
+.review-card span {
+  color: gray;
+  font-size: 14px;
+}
+
+.review-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-form input,
+.review-form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.review-form button {
+  padding: 10px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+  .ownership-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Modal background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+/* Modal box */
+.modal-content {
+  background-color: #222;
+  color: white;
+  margin: 20% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  animation: popup 0.3s ease;
+}
+
+/* Close button */
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes popup {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+  .ownership-section {
+  background: #111;
+  color: white;
+  padding: 30px;
+  text-align: center;
+  margin-top: 20px;
+  }
+  .ownership-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  }
+  
+  #preloader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #333;
+  border-top: 5px solid #28a745;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  .countdown-box {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+  color: white;
+  background: #222;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#timer {
+  color: #ff4d4d;
+  font-weight: bold;
+  font-size: 18px;
+}
+  .price-box {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.old-price {
+  color: #ccc;
+  text-decoration: line-through;
+  font-size: 18px;
+  margin-right: 10px;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.new-price {
+  color: #28a745;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.discount-badge {
+  display: inline-block;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  animation: pulse 1.5s infinite;
+}
+  @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+  @keyframes ring {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  40% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  60% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+  }
+  .top-box {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(90deg, #000, #222);
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-bottom: 3px solid #28a745;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  body {
+  color: white;
+  }
+  .trusted-banner {
+  background-color: #28a745;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  }
+  .container p {
+  background: #1e293b;
+  padding: 8px;
+  margin: 5px auto;
+  border-radius: 6px;
+  max-width: 400px;
+  font-size: 14px;
+  }
+  .gpay {
+  background: #ffffff;
+}
+
+.gpay img {
+  width: 30px;
+}
+  
+  footer {
+  text-align: center;
+  padding: 8px;
+  font-size: 11px;
+  background: #020617;
+  border-radius: 8px;
+  margin: 20px;
+  }
+  .card img {
+  width: 100%;
+  border-radius: 8px;
+  }
+  max-height: 120px;
+
+  
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #8B0000, #FF0000);
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #020617;
+}
+
+header h1 {
+  font-size: 18px;
+  color: red;
+  text-shadow: 0 0 8px red, 0 0 15px red;
+}
+
+nav a {
+  margin-left: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container {
+  padding: 15px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.price {
+  margin: 8px 0;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  background: #22c55e;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #16a34a;
+}
+
+/* Floating buttons */
+.floating {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.float-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp {
+  background: #25D366;
+}
+
+.instagram {
+  background: radial-gradient(circle, #feda75, #d62976, #962fbf);
+}
+
+.float-btn img {
+  width: 25px;
+}
+</style>
+</head>
+  <footer style="text-align:center; padding:10px; font-size:12px; background:#020617; margin-top:20px;">
+  © 2026 Ravin Gaming. All rights reserved.
+  </footer>
+<div id="paymentBox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); align-items:center; justify-content:center;">
+
+  <div style="background:#1e293b; padding:20px; border-radius:10px; text-align:center; width:250px;">
+
+    <h3>Google Pay / UPI</h3>
+
+    <p>Send payment to:</p>
+    <p><strong>ravinrobert31@okicici</strong></p>
+
+    <button onclick="copyUPI()">Copy UPI</button>
+    <br><br>
+    <button onclick="closePayment()">Close</button>
+
+  </div>
+
+</div>
+  <div class="container" style="text-align:center; margin-top:20px;">
+  
+  
+
+  <p>✅ 100% Trusted & No Scam</p>
+  <p>🔒 Secure Deals Only – No Scam Guaranteed</p>
+  <p>💯 Verified Seller – Safe Transactions</p>
+  <p>🛡️ We Ensure Honest & Transparent Deals</p>
+  <p>✔️ Genuine Accounts – No Fake Listings</p>
+  <p>⭐ Customer Trust is Our Priority</p>
+  <p>🚫 No Scam – Only Legit Services</p>
+  <p>🔐 Safe Payment & Reliable Delivery</p>
+
+  </div>
+  <script>
+  // Set countdown time (example: 1 hour from now)
+  let countdownTime = new Date().getTime() + (24 * 60 * 60 * 1000)
+
+  let x = setInterval(function() {
+    let now = new Date().getTime();
+    let distance = countdownTime - now;
+
+    let hours = Math.floor((distance / (1000 * 60 * 60)));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML =
+      ("0" + hours).slice(-2) + ":" +
+      ("0" + minutes).slice(-2) + ":" +
+      ("0" + seconds).slice(-2);
+
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("timer").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+  </script>
+  <script>
+  window.addEventListener("load", function () {
+    let preloader = document.getElementById("preloader");
+    preloader.style.display = "none";
+  });
+  </script>
+  <a href="#ownership" class="ownership-btn">Ownership</a>
+  <button class="ownership-btn" onclick="openModal()">Ownership</button>
+  <div id="ownershipModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <h2>Ownership</h2>
+
+    <p>
+      RAVIN GAME ZONE is owned and managed by Ravin.  
+      We provide premium gaming accounts with trusted service, secure transactions, and instant delivery.  
+      Our mission is to maintain transparency and customer satisfaction.
+    </p>
+    
+  </div>
+
+  </div>
+    <script>
+  function openModal() {
+    document.getElementById("ownershipModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("ownershipModal").style.display = "none";
+  }
+
+  // Close when clicking outside
+  window.onclick = function(event) {
+    let modal = document.getElementById("ownershipModal");
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+    </script>
+  <script>
+function addReview() {
+  let name = document.getElementById("name").value;
+  let message = document.getElementById("message").value;
+
+  if(name === "" || message === "") {
+    alert("Please fill all fields");
+    return;
+  }
+
+  let container = document.querySelector(".review-container");
+
+  let newReview = document.createElement("div");
+  newReview.classList.add("review-card");
+
+  newReview.innerHTML = `
+    <h3>⭐ 5/5</h3>
+    <p>"${message}"</p>
+    <span>- ${name}</span>
+  `;
+
+  container.appendChild(newReview);
+
+  document.getElementById("name").value = "";
+  document.getElementById("message").value = "";
+}
+  </script>
+  
+  </div>
+  <div id="preloader">
+  <div class="loader"></div>
+  <h2>RAVIN GAME ZONE</h2>
+  </div>
+  
+  <div class="top-box">
+  RAVIN GAME ZONE
+  </div>
+
+<header>
+  <h1>Ravin Gaming</h1>
+<nav>
+  <a href="#">Home</a>
+<a href="#">Contact</a>
+</nav>
+</header>
+
+<div class="container">
+  
+
+   class="discount-badge">50% OFF</span>
+</div>
+    <div class="card">
+      <img src="ff5.jpg">
+      <h3>ID 1</h3>
+      <p>Rare gun Skins</p>
+      
+      <div class="products">
+<div class="price-box">
+  <span class="old-price">₹1999</span>
+  <span class="new-price">₹999</span>
+  <span class="discount-badge">50% OFF</span>
+  <div class="countdown-box">
+  ⏳ Offer ends in:
+  <span id="timer">00:00:00</span>
+<button onclick="buy()">Buy Now</button>
+    </div>
+
+    <div class="card">
+      <img src="ff6.jpg">
+      <h3>ID 2</h3>
+      <p>Legendary old Guns</p>
+      <div class="products">
+<div class="price-box">
+  <span class="old-price">₹7000</span>
+  <span class="new-price">₹3500</span>
+  <span class="discount-badge">50% OFF</span>
+  <div class="countdown-box">
+  ⏳ Offer ends in:
+  <span id="timer">00:00:00</span>
+      <button onclick="buy()">Buy Now</button>
+    </div>
+
+    <div class="card">
+      <img src="ff7.jpg">
+      <h3>ID 3</h3>
+      <p>Emotes Evo Bundle</p>
+      <div class="products">
+<div class="price-box">
+  <span class="old-price">₹5000</span>
+  <span class="new-price">₹2500</span>
+  <span class="discount-badge">50% OFF</span>
+  <div class="countdown-box">
+  ⏳ Offer ends in:
+  <span id="timer">00:00:00</span>
+      <button onclick="buy()">Buy Now</button>
+    </div>
+
+    <div class="card">
+      <img src="ff8.jpg">
+      <h3>ID 4</h3>
+      <p>Budget friendly Account</p>
+      <div class="products">
+<div class="price-box">
+  <span class="old-price">₹9000</span>
+  <span class="new-price">₹3000</span>
+  <span class="discount-badge">50% OFF</span>
+  <div class="countdown-box">
+  ⏳ Offer ends in:
+  <span id="timer">00:00:00</span>
+      <button onclick="buy()">Buy Now</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Floating Contact -->
+<div class="floating">
+
+  <a href="https://wa.me/919042458779" target="_blank" class="float-btn whatsapp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+  </a>
+
+  <a href="https://instagram.com/rx_traffic_razer_46" target="_blank" class="float-btn instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+  </a>
+
+  <!-- GPay Floating Button -->
+  <div class="float-btn gpay" onclick="openPayment()">
+    <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png">
+  </div>
+  
+  
+
+</div>
+  <div class="container">
+  <h2>Privacy Policy</h2>
+  <p>
+    We respect your privacy. Your data is only used for communication and order processing.
+    We do not share your personal information with third parties.
+  </p>
+  </div>
+
+<script>
+  function openPayment() {
+  document.getElementById("paymentBox").style.display = "flex";
+}
+
+function closePayment() {
+  document.getElementById("paymentBox").style.display = "none";
+}
+
+function copyUPI() {
+  navigator.clipboard.writeText("ravinrobert31@okicici");
+  alert("UPI ID copied!");
+}
+function buy() {
+  window.location.href = "https://wa.me/919042458779";
+}
+</script>
+      <div id="paymentModal" class="modal">
+
+  <div class="modal-content">
+    <span class="close" onclick="closePayment()">&times;</span>
+
+    <h2>Payment Details</h2>
+
+    <p><strong>UPI ID:</strong> ravinrobert31@okicici</p>
+
+    <div class="icons">
+      <span>📱 Google Pay</span>
+      <span>📱 PhonePe</span>
+      <span>📱 Paytm</span>
+    </div>
+
+    <h3>Scan & Pay</h3>
+    <img src="qr.png" class="qr">
+
+  </div>
+
+      </div>
+      <script>
+function openPayment() {
+  document.getElementById("paymentModal").style.display = "block";
+}
+
+function closePayment() {
+  document.getElementById("paymentModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+  let modal = document.getElementById("paymentModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+      </script>
+      <button onclick="placeOrder()">Buy Now</button>
+
+<script>
+function placeOrder() {
+  // Optional: Add WhatsApp redirect or form validation here
+
+  // Redirect to success page
+  window.location.href = "success.html";
+}
+</script>
+      <div class="pagination">
+  <button onclick="goToNextPage()">Next Page ➡</button>
+</div>
+
+<script>
+function goToNextPage() {
+  window.location.href = "page3.html";
+}
+</script>
+      
+      
+
+</body>
+  <div class="trusted-banner">
+  Trusted Seller ✅
+  </div>
+  <section class="reviews-section">
+  <h2>Customer Reviews</h2>
+
+  <div class="review-container">
+
+    <div class="review-card">
+      <h3>⭐ 5/5</h3>
+      <p>"Great service and instant delivery. Trusted seller!"</p>
+      <span>- naveen</span>
+    </div>
+
+    <div class="review-card">
+      <h3>⭐ 4/5</h3>
+      <p>"Good pricing and smooth transaction."</p>
+      <span>- sharon</span>
+    </div>
+
+  </div>
+  </section>
+      <div class="review-form">
+  <h3>Leave a Review</h3>
+
+  <input type="text" id="name" placeholder="Your Name">
+  <textarea id="message" placeholder="Your Review"></textarea>
+
+  <button onclick="addReview()">Submit</button>
+      </div>
+      
+      
+  <span class="tooltip">Reviews</span>
+</div>
+      
+      
+  </html>
