@@ -683,6 +683,7 @@ function addReview() {
 </div>
     <div class="card">
       <img src="ff1.jpg">
+      <img src="ff1-id.jpg" class="product-img" onclick="openModal()">
       <h3>ID 1</h3>
       <p>Rare Skins</p>
       
@@ -699,6 +700,7 @@ function addReview() {
 
     <div class="card">
       <img src="ff2.jpg">
+      <img src="ff2-id.jpg" class="product-img" onclick="openModal()">
       <h3>ID 2</h3>
       <p>Legendary Guns</p>
       <div class="products">
@@ -714,6 +716,7 @@ function addReview() {
 
     <div class="card">
       <img src="ff3.jpg">
+      <img src="ff3-id.jpg" class="product-img" onclick="openModal()">
       <h3>ID 3</h3>
       <p>Emotes Bundle</p>
       <div class="products">
@@ -729,6 +732,7 @@ function addReview() {
 
     <div class="card">
       <img src="ff4.jpg">
+      <img src="ff4-id.jpg" class="product-img" onclick="openModal()">
       <h3>ID 4</h3>
       <p>Budget Account</p>
       <div class="products">
@@ -845,6 +849,41 @@ function goToNextPage() {
   window.location.href = "page2.html";
 }
 </script>
+      <div id="productModal" class="modal">
+
+  <div class="modal-content">
+
+    <div class="flip-card">
+      <div class="flip-inner" id="flipCard">
+
+        <!-- FRONT SIDE -->
+        <div class="flip-front">
+          <img src="ff1-id.jpg" class="modal-img">
+          <p>Click below to see details</p>
+          <button onclick="flipCard()">View Details ➡</button>
+        </div>
+
+        <!-- BACK SIDE -->
+        <div class="flip-back">
+          <h2>Account Details</h2>
+          <p>✔ Level 70+</p>
+          <p>✔ Rare Skins</p>
+          <p>✔ Linked Account</p>
+
+          <h3>Price: ₹499</h3>
+
+          <p>Interested? DM:</p>
+          <p>📱 WhatsApp: 9042458779</p>
+          <p>📸 Instagram: rx_traffic_razer_46</p>
+
+          <button onclick="closeModal()">Close ❌</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+      </div>
       
       
 
